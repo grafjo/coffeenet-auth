@@ -14,13 +14,16 @@ coffeenet:
 auth:
   development: true
   ldap:
-    url: ldap://localhost:38900
+    url: ldap://192.168.99.100:38900
     base: dc=coffeenet
     userSearchBase: ou=People
     userSearchFilter: uid={0}
     groupSearchBase: ou=Groups
     groupSearchFilter: member={0}
     connection-with-tls: false
+  token:
+    access-token-validity-seconds: 3600
+    refresh-token-validity-seconds: 43200
 
 server:
   port: 9999
@@ -30,7 +33,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mariadb://localhost:3308/auth
+    url: jdbc:mariadb://192.168.99.100:3308/auth
     username: auth
     password: auth
     driver-class-name: org.mariadb.jdbc.Driver
